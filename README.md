@@ -37,3 +37,6 @@ router
   });
 
 ```
+- mock数据:
+ 默认为`./mockroute/mockdata.json` 文件.也可以自己新建mock数据,记得在`./mockroute/index.js`中引入自己编写的mock数据文件.
+
