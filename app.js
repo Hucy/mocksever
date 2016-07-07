@@ -1,2 +1,3 @@
 require('babel-core/register');
-const app = require('./mockroute/index');
+var app = require('./mockroute/index');
+module.exports = app;

@@ -3,22 +3,21 @@ var koa = require('koa');
 var router = require('koa-router')();
 var cors = require('koa-cors');
 var mockdata=require('./mockdata')
+var schemadata=require('./mock')
 var app=new koa();
-var apihost='https://api.github.com/repos/vuejs'
+var apihost=''
 var chalk = require('chalk');
 /**
  * 路由配置
  */
 router
   .get('/', function (ctx, next) {
-    console.log(ctx)
-    ctx.body = mockdata.root
+    // console.log(ctx)
+    ctx.body = schemadata;
   })
   .get("/mock",function(ctx,next){
     ctx.body=mockdata.mock
   });
-
-
 
 
 
@@ -72,3 +71,5 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 app.listen(3000);
+
+module.exports = app
