@@ -2,21 +2,21 @@ var request = require('request');
 var koa = require('koa');
 var router = require('koa-router')();
 var cors = require('koa-cors');
-var mockdata=require('./mockdata')
-var schemadata=require('./mock')
+var mockdata=require('./mockschema');
+var schemadata=require('./mock');
+var serve = require('koa-static');
 var app=new koa();
-var apihost=''
+var apihost=' ';
 var chalk = require('chalk');
 /**
  * 路由配置
  */
 router
-  .get('/', function (ctx, next) {
-    // console.log(ctx)
-    ctx.body = schemadata;
+  .get('/', async function (ctx, next) {
+    ctx.body=mockdata
   })
-  .get("/mock",function(ctx,next){
-    ctx.body=mockdata.mock
+  .get("/mock",async function(ctx,next){
+    ctx.body=mockdata
   });
 
 
@@ -34,6 +34,7 @@ router
  * 如果没有或者请求报错返回自定义路由配置数据
  */
 app.use(cors());
+app.use(serve('static/'));
 app.use(async function(ctx,next){
   // console.log(ctx.url)
   var options = {
@@ -70,6 +71,7 @@ app.use(async function(ctx,next){
 app
   .use(router.routes())
   .use(router.allowedMethods());
+
 app.listen(3000);
 
 module.exports = app

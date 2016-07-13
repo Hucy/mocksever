@@ -10,6 +10,5 @@ jsf.extend('faker', function() {
   return faker;
 });
 var sample = jsf(schema);
-console.dir(sample);
 
 module.exports= sample;
