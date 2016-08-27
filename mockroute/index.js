@@ -18,7 +18,9 @@ router
   .get("/mock",async function(ctx,next){
     ctx.body=mockdata
   });
-
+         
+         
+         
 
 
 
@@ -73,5 +75,5 @@ app
   .use(router.allowedMethods());
 
 app.listen(3000);
-
+console.log('listening to localhost:3000')
 module.exports = app
