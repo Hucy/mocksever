@@ -49,7 +49,7 @@ app.use(async function(ctx,next){
         reject(error)
       }else {
         try {
-          let newres=JSON.parse(body)
+          var newres=JSON.parse(body)
           resolve(newres)
         } catch (e) {
           reject(e)
